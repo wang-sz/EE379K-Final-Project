@@ -20,3 +20,5 @@ Computer Search Engine, Technical Report CSAR-10-025-01,
 Washington, DC, 2010.
 
 https://link.springer.com/chapter/10.1007/978-3-319-04918-2_22
+
+https://globalresilience.northeastern.edu/2018/02/using-shodan-as-a-tool-to-find-vulnerable-devices/
