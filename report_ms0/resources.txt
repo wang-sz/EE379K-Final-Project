@@ -1,0 +1,20 @@
+Shodan-based vulnterability assessment tool for Internet-facing services:
+https://www.sciencedirect.com/science/article/pii/S1874548214000213
+
+Shodan Visualized (visualizations created using IP addresses and open ports from Shodan) (?? maybe )
+https://ieeexplore.ieee.org/abstract/document/7745467
+
+Eval of ability of Shodan search engine (covers functionality of Shodan, evaluate indexing and querying capabilites of Shodan)
+https://www.sciencedirect.com/science/article/pii/S1874548214000213
+
+Contactless Vulnerability Analysis Using Google and Shodan
+http://jucs.org/jucs_23_4/contactless_vulnerability_analysis_using/jucs_23_04_0404_0430_simon.pdf
+
+Vulnerability Type Distributions in CVE
+http://cwe.mitre.org/documents/vuln-trends/vuln-trends.pdf
+
+Impact of the Shodan Computer Search Engine on Internet-facing Industrial Control System Devices
+https://scholar.afit.edu/cgi/viewcontent.cgi?article=1590&context=etd
+U.S. Department of Homeland Security, Analysis of Shodan
+Computer Search Engine, Technical Report CSAR-10-025-01,
+Washington, DC, 2010.
