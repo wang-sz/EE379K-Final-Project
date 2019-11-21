@@ -18,3 +18,5 @@ https://scholar.afit.edu/cgi/viewcontent.cgi?article=1590&context=etd
 U.S. Department of Homeland Security, Analysis of Shodan
 Computer Search Engine, Technical Report CSAR-10-025-01,
 Washington, DC, 2010.
+
+https://link.springer.com/chapter/10.1007/978-3-319-04918-2_22
