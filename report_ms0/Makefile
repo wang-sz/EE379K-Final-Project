@@ -5,7 +5,7 @@ paper.ps: *.tex *.eps *.bib
 	rubber --ps paper
 
 clean:
-	rm -f paper.dvi paper.ps paper.aux paper.log paper.blg paper.bbl
+	rm -f paper.dvi paper.ps paper.aux paper.log paper.blg paper.bbl paper.pdf
 # paper.pdf
 
 paper.pdf: paper.ps

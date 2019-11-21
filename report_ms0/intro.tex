@@ -1,13 +1,58 @@
-First paragraph on the technology/society trends that lead 
-to the problem at hand.
+% First paragraph on the technology/society trends that lead 
+% to the problem at hand.
+With the growth and popularization of the intnert more and more devices
+are becoming connected to each other through the internet. This allows many
+devices to now have the convenience and accessibility of being connected
+to other devices through the internet, such as printing to a
+shared printer connected to the internet or controlling security cameras
+remotely.
 
-Second para: describe the key problem that if solved would make
-an impact. Why the current approaches leave a gap?
+% Second para: describe the key problem that if solved would make
+% an impact. Why the current approaches leave a gap?
+However, a key problem that comes hand in hand with these advantages is that
+any any vulnerabilities could allow unwanted and unauthorized guests to
+control the device remotely. Devices without proper security can be attacked
+and the attackers can then control the devices and gain access to any
+information the device might have. In some cases, attackers can utilize the
+connection and control they have over the device to then attack the other
+devices connected to the same network. For example, Shodan is a tool that
+allows users to search for devices connected to the internet and can give
+potentially useful information for attackers. Currently, there are many
+computer systems, including traffic lights, security camers, or industrial
+control systems, that have little to no security, leaving them vulnerable to
+attackers\cite{Bodenheim}.
 
-Third: describe your approach. Key insight that enables your approach,
-and what is novel/interesting about the insight.
+% Third: describe your approach. Key insight that enables your approach,
+% and what is novel/interesting about the insight.
+The approach taken in this paper is to determine some Common Vulnerabilities
+and Exposures (CVEs) that can be detected remotely and then utilize Shodan
+to see how many machines have those vulnerabilities and what similarities
+the machines have. Then, since one approach to defense against this type of
+detection is to just prevent detection by Shodan, a custom scanning tool
+will be used to see if it has similar results.
 
-Fourth, fifth: Delve deeper into the approach and experimental setup. 
-In the final report, describe key findings.
+% Fourth, fifth: Delve deeper into the approach and experimental setup. 
+% In the final report, describe key findings.
+Overall, the setup is simple and is mostly data analysis and comparison.
+The data returned by Shodan's search will be divided by the CVE that the
+machine is vulnerable to, but will also need to have the flexibility to
+pick a machine and see what CVEs Shodan determined it to be vulnerable to.
+Additionally, the number of CVEs may need to be controlled so that there
+is not too much data to sift through.
 
-End with outline or what comes next and why. 
+The methods for a custom scanner for specific CVEs will depend on the
+specific CVEs chosen.
+
+% End with outline or what comes next and why. 
+The main contributions of this paper are as follows:
+\begin{itemize}
+    \item We explore more about the vulernabilities being searched for and
+        provide more detail on how these can be exploited for some specific
+        systems.
+    \item We show how these vulernabilities can be detected using Shodan
+        and what information can be gathered from these scans. We analyze
+        this information and discuss how this could be used maliciously.
+    \item We create our own scanner and compare its results to Shodan to
+        get insight on how information of specific systems is exposed to
+        the internet.
+\end{itemize}
