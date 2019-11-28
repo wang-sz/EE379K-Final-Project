@@ -1,1 +1,50 @@
+Since there are three different CVEs to look at, the methods used to scan
+for devices vulnerable to those will be slightly different, both with
+Shodan and our custom scanning tool.
 
+% https://nvd.nist.gov/vuln/detail/CVE-2014-2256
+% https://globalresilience.northeastern.edu/2018/02/using-shodan-as-a-tool-to-find-vulnerable-devices/
+% https://stackoverflow.com/questions/47652705/find-device-information-from-ip-address
+For CVE-2014-2256, the vulnerability is described as an issue with Siemens
+SIMATIC S7-1200 CPU PLC devices that have an older firmware that allows remote
+attackers to execute a Denial of Service (DoS) attack\cite{CVE-2014-2256}. On Shodan, the exact
+search term used to find these vulnerable devices is: \verb|siemens port:"102"|.
+The DoS attack is caused by attackers sending ISO-TSAP, or TCP, packets to
+specifically port 102, since this port is left open by the firmware. Then, for
+the custom tool, we use \verb|zmap| to scan on port 102 and get a list of devices
+probed, which could be longer than the list from Shodan, since there is no
+filtering for the specific vulnerable devices we are looking for. Then, we filter
+for devices by getting OS information from \verb|nmap| to determine the final
+list of devices.
+
+% https://nvd.nist.gov/vuln/detail/CVE-2019-0708
+% https://socprime.com/en/blog/proactive-detection-content-cve-2019-0708-vs-attck-sigma-elastic-and-arcsight/
+CVE-2019-0708 is described as a remote code execution vulnerability that
+exists in Microsoft's Remote Desktop Protocol in Windows\cite{CVE-2019-0708}. In Shodan, we need
+several searches for devices with port 3389 open and running versions of 
+Windows that could potentially be vulnerable. This means our searches combines
+the term \verb|port:3389| with one of the following: \verb|os:"Windows 7 or 8"|,
+\verb|os:"Windows XP"|, \verb|2003|, or \verb|2008|. In this case, the last two
+terms refer to versions of Windows Server. Our custom tool utilizes \verb|nmap|
+to detect for an open port 3389 as well as the OS. Then the results are filtered
+for the versions of Windows we are looking for.
+
+% https://nvd.nist.gov/vuln/detail/CVE-2018-0101
+% https://info.stack8.com/blog/numerating-cisco-asa-systems-affected-by-cve-2018-0101-using-shodan
+% https://cymmetria.com/blog/honeypot-cisco-asa-vulnerability/
+% https://www.exploit-db.com/exploits/43986
+Finally, CVE-2018-0101 is a vulnerability in Cisco's Adaptive Security Appliance (ASA)
+Software, specifically the Secure Sockets Layer (SSL) VPN functionality. This
+vulnerability could allow remote execution of a code and is possible since
+enabling the webvpn feature will cause an attempted double free on a region
+of memory on the device. This is detectable by checking to see if the Cisco
+ASA device has the webvpn feature enabled. The National Vulnerability Database
+provides a list of specific devices affected by this vulnerability\cite{CVE-2018-0101}. In Shodan,
+we use the search term \verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"|,
+since the ASA Software sets a the webvpn cookie. Using just the webvpn filter
+may also capture other devices where some other web applications might have
+set the cookie as well, but the ASA Temporary SSL certificate filter gives
+a narrower set of search results of devices vulnerable to this CVE. Our custom
+tool to scan for this vulnerability is a honeypot that detects exploitation
+attempts by listening on port 443 and records the vulnerable IPs that it
+detects.
