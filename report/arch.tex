@@ -23,7 +23,7 @@ CVE-2019-0708 is described as a remote code execution vulnerability that
 exists in Microsoft's Remote Desktop Protocol in Windows\cite{CVE-2019-0708}. In Shodan, we need
 several searches for devices with port 3389 open and running versions of 
 Windows that could potentially be vulnerable. This means our searches combines
-the term \verb|port:3389| with one of the following: \verb|os:"Windows 7 or 8"|,
+the term \verb|port:"3389"| with one of the following: \verb|os:"Windows 7 or 8"|,
 \verb|os:"Windows XP"|, \verb|2003|, or \verb|2008|. In this case, the last two
 terms refer to versions of Windows Server. Our custom tool utilizes \verb|nmap|
 to detect for an open port 3389 as well as the OS. Then the results are filtered

@@ -1,1 +1,18 @@
+For CVE-2014-225, the Shodan search for \verb|siemens port:"102"| returned
+1,499 results, with the top five countries the results are from being
+Germany, Italy, United States, Spain, and United Kingdom, as shown in
+Figure~\ref{fig:shodan-siemens}. Our custom tool, on the other hand ????/
 
+For CVE-2019-0708, the Shodan search for \verb|port:"3389"| returned
+5,095,829 results, but would need to be narrowed down based on the operating
+system. Adding \verb|os:"Windows 7 or 8"| to the original search term returned
+12,112 results. Adding \verb|os:"Windows XP"| to the original search term
+returned 1,957 results. Adding \verb|2003| to the original search term returned
+32,560 results. Adding \verb|2008| to the original search term returned 32,802
+results. 
+
+Finally, for CVE-2018-0101, the Shodan search for\\
+\verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"| returned 42,119 results.
+The top five countries these results were from are United States, United Kingdom,
+Germany, Canada, and Italy, with the exact numbers shown in
+Figure~\ref{fig:shodan-cisco}.
