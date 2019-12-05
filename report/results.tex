@@ -1,18 +1,46 @@
-For CVE-2014-225, the Shodan search for \verb|siemens port:"102"| returned
+For CVE-2014-2256, the Shodan search using the term \\\verb|siemens port:"102"| returned
 1,499 results, with the top five countries the results are from being
 Germany, Italy, United States, Spain, and United Kingdom, as shown in
-Figure~\ref{fig:shodan-siemens}. Our custom tool, on the other hand ????/
+Figure~\ref{fig:shodan-siemens}. Our custom tool, on the other hand,
+discovered 801 internet facing devices on port 102 after a zmap scan of 10000
+seconds.
+
+\begin{figure}[!h]
+\begin{center}
+\psfig{figure=images/port-102.eps,width=2.5in,height=3.75in} 
+\caption{Shodan search results for CVE-2014-2256}
+\label{fig:shodan-siemens}
+\end{center}
+\end{figure}
 
 For CVE-2019-0708, the Shodan search for \verb|port:"3389"| returned
 5,095,829 results, but would need to be narrowed down based on the operating
-system. Adding \verb|os:"Windows 7 or 8"| to the original search term returned
-12,112 results. Adding \verb|os:"Windows XP"| to the original search term
+system. Adding the term \verb|os:"Windows 7 or 8"| to the original search term returned
+12,012 results, shown in Figure~\ref{fig:shodan-windows-78}. Adding
+\verb|os:"Windows XP"| to the original search term
 returned 1,957 results. Adding \verb|2003| to the original search term returned
 32,560 results. Adding \verb|2008| to the original search term returned 32,802
-results. 
+results. Our custom scanning script discovered 2354 internet facing devices on
+port 3389 after scanning for 10000 seconds.
+
+\begin{figure}[!h]
+\begin{center}
+\psfig{figure=images/port-3389-w78.eps,width=2in,height=3in} 
+\caption{Shodan search results for CVE-2019-0708, where the device OS is Windows 7 or 8}
+\label{fig:shodan-windows-78}
+\end{center}
+\end{figure}
 
 Finally, for CVE-2018-0101, the Shodan search for\\
-\verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"| returned 42,119 results.
+\verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"| returned\\42,119 results.
 The top five countries these results were from are United States, United Kingdom,
 Germany, Canada, and Italy, with the exact numbers shown in
 Figure~\ref{fig:shodan-cisco}.
+
+\begin{figure}[!h]
+\begin{center}
+\psfig{figure=images/cisco.eps,width=2in,height=3in} 
+\caption{Shodan search results for CVE-2018-0101}
+\label{fig:shodan-cisco}
+\end{center}
+\end{figure}
