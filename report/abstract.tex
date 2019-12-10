@@ -2,9 +2,12 @@
 % and end with highlights of results. For the initial report, end with
 % the proposed experiments and what you aim to find out.
 
-We scan the internet for vulernable devices, focusing on select
-vulerabilities, using Shodan. Then, we analyze the data to see
-what the detected machines have in common. Additionally, we create
-our own scanner to scan the internet for machines vulernable to the
-same vulnerabilities and compare the results to those of Shodan's
-scan.
+Shodan is a popular search engine used to detect Internet-facing devices.
+By using this tool, we are able to collect data from IPs across the
+Internet, focusing on select vulnerabilities. In this paper, we will
+discuss how Shodan is used to find numbers of machines on the Internet
+that are vulnerable from chosen CVEs that are remotely detected. The data
+is then analyzed to see what the detected machines have in common.
+Afterwards, we create our own scanner to scan the Internet for vulnerable
+machines on the same ports as those of the identified devices in the CVEs.
+The results are then compared to those of Shodan's scan.
