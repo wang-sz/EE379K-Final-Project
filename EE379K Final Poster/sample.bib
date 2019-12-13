@@ -1,0 +1,82 @@
+@TechReport{afit//CSAR-10-025-01,
+  author =      "Roland C. Bodenheim",
+  title =       "Impact of the Shodan Computer Search Engine on Internet-facing Industrial Control System Devices",
+  institution = "Air Force Institute of Technology",
+  year =        "2014",
+  month =       Mar,
+  bibdate =     "March 14, 2014",
+  abstract =    "The Shodan computer search engine crawls the Internet attempting to identify any
+                connected device. Using Shodan, researchers identified thousands of Internet-facing
+                devices associated with industrial controls systems (ICS). This research examines the
+                impact of Shodan on ICS security, evaluating Shodans ability to identify
+                Internet-connected ICS devices and assess if targeted attacks occur as a result of Shodan
+                identification. In addition, this research evaluates the ability to limit device exposure to
+                Shodan through service banner manipulation. Shodans impact was evaluated by deploying
+                four high-interaction, unsolicited honeypots over a 55 day period, each configured to
+                represent Allen-Bradley programmable logic controllers (PLC). All four honeypots were
+                successfully indexed and identifiable via the Shodan web interface in less than 19 days.
+                Despite being indexed, there was no increased network activity or targeted ICS attacks.
+                Although results indicate Shodan is an effective reconnaissance tool, results contrast
+                claims of its use to broadly identify and target Internet-facing ICS devices. Additionally,
+                the service banner for two PLCs were modified to evaluate the impact on Shodan indexing
+                capabilities. Findings demonstrated service banner manipulation successfully limited
+                device exposure from Shodan queries."
+}
+
+@TechReport{bodenheim_shodan_ics,
+  author =      "R. Bodenheim and J. Butts and S. Dunlap and B. Mullins",
+  title =       "Evaluation of the ability of the Shodan search engine to identify Internet-facing industrial control devices",
+  institution = "Air Force Institute of Technology",
+  year =        "2014",
+  month =       Jan,
+  bibdate =     "January 15, 2014",
+  abstract =    "The Shodan computer search engine has received significant attention due to its ability
+                to identify and index Internet-facing industrial control system components. Industrial
+                control systems are employed in numerous critical infrastructure assets, including oil
+                and gas pipelines, water distribution systems, electrical power grids, nuclear plants
+                and manufacturing facilities. The ability of malicious actors to identify industrial
+                control devices that are accessible over the Internet is cause for alarm. Indeed, Shodan
+                provides attackers with a powerful reconnaissance tool for targeting industrial control systems.
+
+                This paper investigates the functionality of the Shodan computer search engine. In the experiments, four
+                Allen-Bradley ControlLogix programmable logic controllers were deployed in an Internet-facing
+                configuration to evaluate the indexing and querying capabilities of Shodan: all four
+                programmable logic controllers were indexed and identified by Shodan within 19 days. This
+                paper also describes a potential mitigation strategy that employs service banner manipulation
+                to limit the exposure to Shodan queries."
+}
+
+@article{shodan_vis,
+  author =      "Vincent J. Ercolani and Mark W. Patton and Hsinchun Chen",
+  title =       "Shodan Visualized",
+  booktitle =   "2016 IEEE Conference on Intelligence and Security Informatics",
+  organization ="IEEE",
+  year =        "2016"
+}
+
+@article{google_shodan,
+  author =      "Kai Simon and Cornelius Moucha and Joerg Keller",
+  title =       "Contactless Vulnerability Analysis using Google and Shodan",
+  year =        "2017"
+}
+
+@misc {CVE-2014-2256, 
+  title = {CVE-2014-2256 Detail},
+  url = {https://nvd.nist.gov/vuln/detail/CVE-2014-2256},
+  year = {2014},
+  month = {March},
+}
+
+@misc {CVE-2019-0708, 
+  title = {CVE-2019-0708 Detail},
+  url = {https://nvd.nist.gov/vuln/detail/CVE-2019-0708},
+  year = {2019},
+  month = {July},
+}
+
+@misc {CVE-2018-0101, 
+  title = {CVE-2018-0101 Detail},
+  url = {https://nvd.nist.gov/vuln/detail/CVE-2018-0101},
+  year = {2019},
+  month = {October},
+}
