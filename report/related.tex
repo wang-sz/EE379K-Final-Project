@@ -12,28 +12,41 @@
 % := 0$ and thus provide a solution to the halting problem for arbitrary
 % recursive function''~\cite{denning-impossible}.  
 
-In "Impact of the Shodan Computer Search Engine on Internet-facing Industrial
-Control System Devices"\cite{afit//CSAR-10-025-01}, they discuss metrics
-on whether or not Shodan has been and is being used to target industrial control
-system devices. This addresses the concern of whether this method and channel of
-attack are widely used when targetting a specific set of devices.
+Bodenheim \cite{afit//CSAR-10-025-01} discusses the metrics
+on whether or not Shodan is being used to target industrial control
+system devices (ICS), and addresses the concern of 
+whether this method and channel of attack are widely used when targetting 
+a specific set of devices. The research done in this paper evaluates Shodan's impact 
+on Internet-connected ICS device security by using a series of Internet-facing ICS honeypots.
+These honeypots were designed to be representative of ICS devices that are 
+currently found through Shodan. Thus, allowing him to analyze network activity by measuring
+transmission control protocol (TCP) connections, total number of TCP packets, and
+the number of distinct IP addresses interacting with each honeypot. Overall, they found
+Shodan does not impact Internet-facing ICS device security, but is identified as a passive
+reconnaissance tool.
 
-In another paper, "Evaluation of the ability of the Shodan search engine to
-identify Internet-facing industrial control devices"\cite{bodenheim_shodan_ics},
-they analyze Shodan's detection ability on a specific programmable logic controller
-and suggests a potential solution to mitigate its visibility to Shodan.
+In another paper, Bodenheim et. al.\cite{bodenheim_shodan_ics},
+analyzes Shodan's detection ability on a specific programmable logic controller (PLC)
+and suggests a potential solution to mitigate its visibility to Shodan. Four PLCs were
+configured to be Internet-connecting and deployed to evaulate Shodan's indexing and
+querying proficiencies. All the PLCs were exposed to two ports, Port 80 and Port 44818,
+while two of these were designed to have altered service banners in order to prevent
+Shodan query discovery. The results show that Shodan was able to successfully 
+index and identify all the deployed PLCs within 19 days, thus showing the
+expansive capabilities of Shodan.
 
-In "Shodan Visualized"\cite{shodan_vis}, the paper discusses how Shodan actually
-scans the internet. Shodan works by scanning the internet for open ports on 
+Ercolani et. al.\cite{shodan_vis} discusses how Shodan actually
+scans the Internet. Shodan works by scanning the Internet for open ports on 
 IP addresses and determines runnings services on chosen ports. In order to
 visualize these open ports, they create visualizations that use both IP addresses
 and open ports as nodes. The team focuses on identifying Supervisory Control and
 Data Acquisition (SCADA) and Industrial Control System (ICS) devices due to the
-infrastructural support of these devices. Shodan visualizations can provide a
-solution in understanding what devices are running on a network.
+infrastructural support of these devices. These Shodan visualizations pose a
+potential solution in understanding what devices are running on a network.
 
-In "Contactless Vulnerability Analysis using Google and Shodan"\cite{google_shodan},
-the paper discusses combining Google searches and Shodan searches to determine
-the vulnerability of systems in large scale networks. This contactless vulnerability
-analysis suggests a potential solution in analyzing vulnerable domains by refining search terms and 
-combining results from Google and Shodan.
+
+% In "Contactless Vulnerability Analysis using Google and Shodan"\cite{google_shodan},
+%the paper discusses combining Google searches and Shodan searches to determine
+%the vulnerability of systems in large scale networks. This contactless vulnerability
+%analysis suggests a potential solution in analyzing vulnerable domains by refining search terms and 
+%combining results from Google and Shodan.

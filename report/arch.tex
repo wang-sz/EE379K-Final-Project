@@ -1,6 +1,10 @@
 Since there are three different CVEs to look at, the methods used to scan
 for devices vulnerable to those will be slightly different, both with
-Shodan and our custom scanning tool.
+Shodan and our custom scanning tool. The CVEs listed below were chosen due 
+to their commonality, since this would mean that there would be more 
+information to work with. Additionally, that gives the custom scanner more 
+opportunities in the situation that it does not perform as well as Shodan, 
+so that a better comparison can be made between the two scanning methods.
 
 % https://nvd.nist.gov/vuln/detail/CVE-2014-2256
 % https://globalresilience.northeastern.edu/2018/02/using-shodan-as-a-tool-to-find-vulnerable-devices/
@@ -22,7 +26,7 @@ list of devices.
 CVE-2019-0708 is described as a remote code execution vulnerability that
 exists in Microsoft's Remote Desktop Protocol in Windows\cite{CVE-2019-0708}. In Shodan, we need
 several searches for devices with port 3389 open and running versions of 
-Windows that could potentially be vulnerable. This means our searches combines
+Windows that could potentially be vulnerable. This means our searches combine
 the term \verb|port:"3389"| with one of the following: \verb|os:"Windows 7 or 8"|,
 \verb|os:"Windows XP"|, \verb|2003|, or \verb|2008|. In this case, the last two
 terms refer to versions of Windows Server. Our custom tool utilizes \verb|nmap|
@@ -44,7 +48,5 @@ we use the search term \verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"|,
 since the ASA Software sets a the webvpn cookie. Using just the webvpn filter
 may also capture other devices where some other web applications might have
 set the cookie as well, but the ASA Temporary SSL certificate filter gives
-a narrower set of search results of devices vulnerable to this CVE. Our custom
-tool to scan for this vulnerability is a honeypot that detects exploitation
-attempts by listening on port 443 and records the vulnerable IPs that it
-detects.
+a narrower set of search results of devices vulnerable to this CVE. 
+% what our custom tool scan is

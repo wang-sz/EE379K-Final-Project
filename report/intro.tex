@@ -1,35 +1,41 @@
 % First paragraph on the technology/society trends that lead 
 % to the problem at hand.
-With the growth and popularization of the intnert more and more devices
-are becoming connected to each other through the internet. This allows many
-devices to now have the convenience and accessibility of being connected
-to other devices through the internet, such as printing to a
-shared printer connected to the internet or controlling security cameras
+With the growth and popularization of the Internet of Things (IoT),
+more and more devices are becoming connected to each other through the Internet. 
+This allows many devices to now have the convenience and accessibility of being 
+connected to other devices through the Internet, such as printing to a
+shared printer connected to the Internet or controlling security cameras
 remotely.
 
 % Second para: describe the key problem that if solved would make
 % an impact. Why the current approaches leave a gap?
 However, a key problem that comes hand in hand with these advantages is that
-any any vulnerabilities could allow unwanted and unauthorized guests to
-control the device remotely. Devices without proper security can be attacked
-and the attackers can then control the devices and gain access to any
-information the device might have. In some cases, attackers can utilize the
-connection and control they have over the device to then attack the other
-devices connected to the same network. For example, Shodan is a tool that
-allows users to search for devices connected to the internet and can give
-potentially useful information for attackers. Currently, there are many
-computer systems, including traffic lights, security camers, or industrial
-control systems, that have little to no security, leaving them vulnerable to
-attackers\cite{afit//CSAR-10-025-01}.
+any vulnerabilities across millions of endpoints could allow unwanted and
+unauthorized guests to control the device remotely. Devices without proper
+security can be attacked and, thus, the attackers are able to control the 
+devices and gain access to any information the victim might have. In some cases,
+attackers can utilize the connection and control they have over the device to then 
+attack the other devices connected to the same network. The search engine tool, Shodan, can
+be used by attackers to help them search for Internet-connected devices. Shodan works by
+searching and indexing any connected device, ranging from home routers to traffic lights, and can produce
+useful information through Shodan's banner grabbing capabilities. The service banner
+contains various information for an IoT device, including geographic location, 
+IP address, softare version, make and model, etc. for specific ports. 
+Currently, there are many computer systems, including traffic lights, security cameras,
+or industrial control systems, that have little to no security, leaving them vulnerable to attackers\cite{afit//CSAR-10-025-01}.
 
 % Third: describe your approach. Key insight that enables your approach,
 % and what is novel/interesting about the insight.
 The approach taken in this paper is to determine some Common Vulnerabilities
 and Exposures (CVEs) that can be detected remotely and then utilize Shodan
 to see how many machines have those vulnerabilities and what similarities
-the machines have. Then, since one approach to defense against this type of
-detection is to just prevent detection by Shodan, a custom scanning tool
-will be used to see if it has similar results.
+those machines have. Shodan is a quick and easy way to explore the large
+spanned IoT and detect key vulnerabilities in Internet-facing devices.
+Although many people believe Shodan is a privacy concern due to its detailed
+device-level insights, it is completely legal and serves to only collect
+already available data to the public. After scanning the ports through Shodan,
+our next step is creating a custom scanning tool that will be used to see if we obtain
+similar results to that of Shodan's scan. 
 
 % Fourth, fifth: Delve deeper into the approach and experimental setup. 
 % In the final report, describe key findings.

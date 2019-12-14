@@ -12,23 +12,22 @@
 % \end{figure}
 %--------------------------------------------
 
-For this project, the works that we will build on most are the "Evaluation of
-the ability of the Shodan search engine to identify Internet-facing industrial
-control devices", "Impact of the Shodan Computer Search Engine on Internet-facing
-Industrial Control System Devices," and "Contactless Vulnerability Analysis using
-Google and Shodan."
+% -describe what real world concern or issues does the project aim to solve, why you feel this was a good project that people should care about.
+% -Why having a tool to scan the internet helpful/useful
+% -rename section to: (eg, Ideology, Practical implications etc.) 
+% - Think from an internal security compliance team perspective -- you want to make sure all your apps are upto the latest security standard so that a breach is not easy
+% -Think from pen-test engineers/consultancies -- they want a nice and effective way to detect vulnerabilities in systems so that the client's purpose is solved and they gain reputation etc.
 
-All of the above mentioned works cover the Shodan search engine which will be
-helpful in starting this project and knowing what we can do to perform our own
-form of vulnerability analysis. The second report explains in more detail
-compared to the other two about the Shodan program itself, such as its
-functionality and device identification, indexing, as well as its setup and
-deployment. Together, these reports in addition to previous labs involving
-internet scanning will help us achieve our goal in discovering vulnerable
-machines found by our script.
-
-The CVEs listed previously were chosen due to their commonality, since this
-would mean that there would be more information to work with. Additionally,
-that gives the custom scanner more opportunities in the situation that it
-does not perform as well as Shodan, so that a better comparison can be made
-between the two scanning methods.
+The number of devices connected to the Internet are growing exponentially, increasing
+the chances that malicious actors will be able to find vulnerable Internet-connected devices.
+These devices can expose a wide variety of remotely accessible services
+and are easily identified through search engines, like Shodan, designed for IoT devices.
+This poses as a privacy concern for many as Shodan's port scans can reveal a lot of
+private information about a device. We created a tool to scan the Internet
+because it is useful in finding the vulnerabilities in a device that malicious actors
+would use to gain access to any device, or, for instance, any device that
+I may have connected to a network, for instance. Then the user is able to 
+take precautionary security steps to prevent any cybercriminal hacking on his or her
+device, such as modifying firewall rules or restricting Internet access.
+Thus, by performing regular scans on the Internet, a user is able to keep up to date
+if any new devices are being connected to the network. 
