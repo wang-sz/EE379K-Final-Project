@@ -1,9 +1,25 @@
+Our experimental results were still interesting despite some of the issues
+we ran into. Often, running the \verb|zmap|~\ref{zmap} scan would cause our
+home router to shutdown during long scans, so to make up for that we did
+several shorter scans to increase our sample size, keeping only unique IPs.
+We also approached scanning by creating a tool to establish connections to
+each individual IP, but even with multithreading it could not reach the speed
+of \verb|zmap|~\ref{zmap}. In the end, we decided to include that method in
+the pipeline as an additional filter to make sure we have a list of IPs
+that we can create connections to.
+
 For CVE-2014-2256, the Shodan search using the term \\\verb|siemens port:"102"| returned
 1,499 results, with the top five countries the results are from being
 Germany, Italy, United States, Spain, and United Kingdom, as shown in
 Figure~\ref{fig:shodan-siemens}. Our custom tool, on the other hand,
-discovered 801 internet facing devices on port 102 after a zmap scan of 10000
-seconds.
+discovered 2957 internet facing devices on port 102 after a few zmap scans
+of 10000 seconds each. Then, after grabbing banners for each IP and filtering
+the banner information, we see that 2500 are open and 59 are vulnerable. Compared
+to the Shodan search, this is not a lot of results, but shows that even Shodan
+is not necessarily needed to find this vulnerability in a device. A direct
+comparison between the number of results found for both Shodan and our custom
+tool, along with ratios of vulnerable devices detected to devices probed, is
+given in Table~\ref{tab:cve-2014}.
 
 \begin{figure}[!h]
 \begin{center}
@@ -13,15 +29,31 @@ seconds.
 \end{center}
 \end{figure}
 
+\begin{table}[!h]
+\begin{tabular}{l|l|l}
+                             & Shodan & Custom Tool \\ \hline
+Scan on Port 102             & 21,843 & 2,500       \\ \hline
+Vulnerable Devices Detected  & 1,401  & 59          \\ \hline
+Vulnerable to Detected Ratio & 0.0641 & 0.0236      \\
+\end{tabular}
+\caption{Comparison of Shodan results and our custom tool's results for CVE-2014-2256.}
+\label{tab:cve-2014}
+\end{table}
+
 For CVE-2019-0708, the Shodan search for \verb|port:"3389"| returned
-5,095,829 results, but would need to be narrowed down based on the operating
+4,977,976 results, but would need to be narrowed down based on the operating
 system. Adding the term \verb|os:"Windows 7 or 8"| to the original search term returned
-12,012 results, shown in Figure~\ref{fig:shodan-windows-78}. Adding
+14,012 results, shown in Figure~\ref{fig:shodan-windows-78}. Adding
 \verb|os:"Windows XP"| to the original search term
-returned 1,957 results. Adding \verb|2003| to the original search term returned
-32,560 results. Adding \verb|2008| to the original search term returned 32,802
-results. Our custom scanning script discovered 2354 internet facing devices on
-port 3389 after scanning for 10000 seconds.
+returned 2,174 results. Adding \verb|2003| to the original search term returned
+35,560 results. Adding \verb|2008| to the original search term returned 36,802
+results. Our custom scanning script, on the other hand, discovered 8,796 internet
+facing devices on port 3389 after running a zmap~\cite{zmap} scan for 10000 seconds.
+Then, after each layer of filtering, we had 8,796 IPs that we could connect to and
+732 vulnerable devices out of those. We found considerably more vulnerable devices
+with our custom tool for this CVE, likely due to the fact that there are just 
+more devices with this vulnerability overall. Again, a comparison is given in tabular
+form in Table~\ref{tab:cve-2019} with the vulnerability ratio listed at the bottom.
 
 \begin{figure}[!h]
 \begin{center}
@@ -31,11 +63,32 @@ port 3389 after scanning for 10000 seconds.
 \end{center}
 \end{figure}
 
+\begin{table}[!h]
+\begin{tabular}{r|l|l}
+    \multicolumn{1}{l|}{}                                                                                         & Shodan    & Custom Tool \\ \hline
+    \multicolumn{1}{l|}{Scan on Port 3389}                                                                        & 4,977,976 & 8,796       \\ \hline
+    \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Vulnerable Devices Detected\\ (by OS for Shodan)\end{tabular}} &           &             \\ \hline
+    Windows 7 or 8                                                                                                 & 14,012    &             \\ \hline
+    Windows XP                                                                                                     & 2,174     &             \\ \hline
+    Windows Server 2003                                                                                            & 35,560    &             \\ \hline
+    Windows Server 2008                                                                                            & 36,802    &             \\ \hline
+    Total                                                                                                          & 88,548    & 732         \\ \hline
+    \multicolumn{1}{l|}{Vulnerable to Detected Ratio}                                                             & 0.01779   & 0.08322     \\
+\end{tabular}
+\caption{Comparison of Shodan results and our custom tool's results for CVE-2019-0708.}
+\label{tab:cve-2019}
+\end{table}
+
 Finally, for CVE-2018-0101, the Shodan search for\\
-\verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"| returned\\42,119 results.
+\verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"| returned\\42,246results.
 The top five countries these results were from are United States, United Kingdom,
 Germany, Canada, and Italy, with the exact numbers shown in
-Figure~\ref{fig:shodan-cisco}.
+Figure~\ref{fig:shodan-cisco}. A more generic search for \verb|port:"443"| gave
+42,311,357 results, but includes devices used for purposes besides a VPN server.
+Our custom tool found 9,016IPs after scanning for 10000 seconds, but found that,
+out of those, 104 had "ASA Temporary" as the common name in their SSL Certificates.
+A side by side comparison of the number of results from each tool is shown in
+Table~\ref{tab:cve-2018}.
 
 \begin{figure}[!h]
 \begin{center}
@@ -44,3 +97,14 @@ Figure~\ref{fig:shodan-cisco}.
 \label{fig:shodan-cisco}
 \end{center}
 \end{figure}
+
+\begin{table}[!h]
+\begin{tabular}{l|l|l}
+                             & Shodan     & Custom Tool \\ \hline
+Scan on Port 443             & 40,311,357 & 9,016       \\ \hline
+Vulnerable Devices Detected  & 42,246     & 104         \\ \hline
+Vulnerable to Detected Ratio & 0.00104799 & 0.011535    \\
+\end{tabular}
+\caption{Comparison of Shodan results and our custom tool's results for CVE-2018-0101.}
+\label{tab:cve-2018}
+\end{table}

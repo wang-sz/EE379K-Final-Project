@@ -12,17 +12,27 @@ remotely.
 However, a key problem that comes hand in hand with these advantages is that
 any vulnerabilities across millions of endpoints could allow unwanted and
 unauthorized guests to control the device remotely. Devices without proper
-security can be attacked and, thus, the attackers are able to control the 
-devices and gain access to any information the victim might have. In some cases,
-attackers can utilize the connection and control they have over the device to then 
-attack the other devices connected to the same network. The search engine tool, Shodan, can
-be used by attackers to help them search for Internet-connected devices. Shodan works by
-searching and indexing any connected device, ranging from home routers to traffic lights, and can produce
-useful information through Shodan's banner grabbing capabilities. The service banner
+security in place are vulnerable to attacks such as Denial of Service or a remote
+control protocol. Attackers can abuse these gaps in security to gain access to
+information the victim might have or hijack the device and use it for their own
+purposes. If a device on a subnet were left unsecured and gets hijacked, attackers
+could even use it as a backdoor to other devices connected to the same subnet.
+There are plenty of tools that attackers can use to discover potentially useful
+information to perform these attacks, such as zmap~\cite{zmap}, nmap~\cite{nmap},
+and Shodan~\cite{shodan}.
+Both zmap~\cite{zmap} and nmap~\cite{nmap} are used to scan the Internet, but the
+latter can give much more detailed information, such as the device's name, OS, 
+and even hardware information through OS fingerprinting and banner grabbing. 
+However, the search engine tool, Shodan, can
+provide a way for attackers to filter IPs for certain vulnerabilities as well and
+it works by searching and indexing any connected device. These devices range from home routers
+to traffic lights, and Shodan can produce useful information through it's banner
+grabbing capabilities, similar to nmap. The service banner
 contains various information for an IoT device, including geographic location, 
-IP address, softare version, make and model, etc. for specific ports. 
+IP address, software version, make and model, etc. for specific ports. 
 Currently, there are many computer systems, including traffic lights, security cameras,
-or industrial control systems, that have little to no security, leaving them vulnerable to attackers\cite{afit//CSAR-10-025-01}.
+or industrial control systems, that have little to no security, leaving
+them vulnerable to attackers\cite{afit//CSAR-10-025-01}.
 
 % Third: describe your approach. Key insight that enables your approach,
 % and what is novel/interesting about the insight.
@@ -39,25 +49,31 @@ similar results to that of Shodan's scan.
 
 % Fourth, fifth: Delve deeper into the approach and experimental setup. 
 % In the final report, describe key findings.
-Overall, the setup is simple and is mostly data analysis and comparison.
-The data returned by Shodan's search will be divided by the CVE that the
-machine is vulnerable to, but will also need to have the flexibility to
-pick a machine and see what CVEs Shodan determined it to be vulnerable to.
+Overall, the setup is fairly straightforward.
+The data returned by Shodan's search is split up into several pieces based
+on the different search terms used and by the CVE that the search terms
+target. On the other hand, the methods for a custom scanner for specific
+CVEs depend on the specific CVEs chosen, but have a similar pipeline:
+scan for IPs that respond on a specific port, establish socket connections
+with those IPs, grab banners from devices we can connect to, and search
+the banners for information of interest. In this case, we look at
+CVE-2014-2256, CVE-2019-0708, and CVE-2018-0101.
 
-The methods for a custom scanner for specific CVEs will depend on the
-specific CVEs chosen. In this case, we plan to look at CVE-2014-2256,
-CVE-2019-0708, and CVE-2018-0101.
+Evaluating the performance of our custom tool, we see that although our
+results are not as numerous and impressive as the Shodan searches, it is
+still possible to find these vulnerabilities in some devices with relative
+ease.
 
 % End with outline or what comes next and why. 
 The main contributions of this paper are as follows:
 \begin{itemize}
-    \item We explore more about the vulernabilities being searched for and
+    \item We explore more about the vulnerabilities being searched for and
         provide more detail on how these can be exploited for some specific
         systems.
-    \item We show how these vulernabilities can be detected using Shodan
+    \item We show how these vulnerabilities can be detected using Shodan
         and what information can be gathered from these scans. We analyze
         this information and discuss how this could be used maliciously.
     \item We create our own scanner and compare its results to Shodan to
         get insight on how information of specific systems is exposed to
-        the internet.
+        the Internet.
 \end{itemize}

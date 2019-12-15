@@ -15,11 +15,10 @@ attackers to execute a Denial of Service (DoS) attack\cite{CVE-2014-2256}. On Sh
 search term used to find these vulnerable devices is: \verb|siemens port:"102"|.
 The DoS attack is caused by attackers sending ISO-TSAP, or TCP, packets to
 specifically port 102, since this port is left open by the firmware. Then, for
-the custom tool, we use \verb|zmap| to scan on port 102 and get a list of devices
-probed, which could be longer than the list from Shodan, since there is no
-filtering for the specific vulnerable devices we are looking for. Then, we filter
-for devices by getting OS information from \verb|nmap| to determine the final
-list of devices.
+the custom tool, we use \verb|zmap|~\cite{zmap} to scan on port 102 and get a list of devices
+probed. Then, we filter for devices by establishing a socket connection for each probed IP
+and grabbing a banner from the device to get more information. We then search the information
+for "Siemens" to filter the list of IPs for vulnerable devices.
 
 % https://nvd.nist.gov/vuln/detail/CVE-2019-0708
 % https://socprime.com/en/blog/proactive-detection-content-cve-2019-0708-vs-attck-sigma-elastic-and-arcsight/
@@ -29,9 +28,11 @@ several searches for devices with port 3389 open and running versions of
 Windows that could potentially be vulnerable. This means our searches combine
 the term \verb|port:"3389"| with one of the following: \verb|os:"Windows 7 or 8"|,
 \verb|os:"Windows XP"|, \verb|2003|, or \verb|2008|. In this case, the last two
-terms refer to versions of Windows Server. Our custom tool utilizes \verb|nmap|
-to detect for an open port 3389 as well as the OS. Then the results are filtered
-for the versions of Windows we are looking for.
+terms refer to versions of Windows Server. Our custom tool for this vulnerability follows
+a similar pipeline to the previous vulnerability on Siemens devices, utilizing \verb|zmap|~\cite{zmap}
+to gather IPs probed on port 3389. However, in this case, after connecting to each IP and
+attempting to get a banner from each one, we search the banner information for any of the
+following terms: \verb|Windows 7|, \verb|Windows 8|, \verb|Windows XP|, or \verb|Windows Server|.
 
 % https://nvd.nist.gov/vuln/detail/CVE-2018-0101
 % https://info.stack8.com/blog/numerating-cisco-asa-systems-affected-by-cve-2018-0101-using-shodan
@@ -45,8 +46,13 @@ of memory on the device. This is detectable by checking to see if the Cisco
 ASA device has the webvpn feature enabled. The National Vulnerability Database
 provides a list of specific devices affected by this vulnerability\cite{CVE-2018-0101}. In Shodan,
 we use the search term \verb|"Set-Cookie: webvpn=;" ssl:"ASA Temporary"|,
-since the ASA Software sets a the webvpn cookie. Using just the webvpn filter
+since the ASA Software sets the webvpn cookie. Using just the webvpn filter
 may also capture other devices where some other web applications might have
 set the cookie as well, but the ASA Temporary SSL certificate filter gives
 a narrower set of search results of devices vulnerable to this CVE. 
-% what our custom tool scan is
+Our custom tool to scan for this vulnerability has a similar pipeline, probing for
+IPs on port 443 instead. Additionally, rather than grab a banner from the device,
+we want to look for the term "ASA Temporary" in the SSL Certificate. Using the Python
+module for OpenSSL~\ref{openssl}, we attempted to obtain SSL Certificates from each IP
+that was probed and for the successful attempts, we then search the certificate
+for the term.

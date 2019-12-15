@@ -1,5 +1,16 @@
-We expect that Shodan can detect these vulnerabilities and that not all
-machines with these vulnerabilities have been patched, since it may be
-harder to patch on certain machines than others. Additionally, we expect
-that the results of our own scanner to be similar to Shodan's scan, but
-with less results.
+Overall, the test results were decent, considering the bandwidth
+limitations that we had for scanning the internet. In fact, the ratios
+show that with a bit of luck, even if scanning the whole internet is not
+possible, vulnerable devices in the IPs probed are not too hard to come
+across. We did expect that there would be much less results from our
+custom tool compared to Shodan, which is evident when looking at the
+raw numbers from both port scanning and further filtering, like specifying
+the device manufacturer or the device OS.
+However, it is important to take note of the feasibility of writing a tool
+to detect certain vulnerabilities. For example, given a much smaller
+network rather than the whole internet, probing devices would not take
+as long and our custom tool would be much faster. In other words, detection
+of these vulnerabilities in one's own devices is not a big challenge
+and a solution should be sought after quickly for such vulnerabilities.
+Whether the solution is easy or difficult depends much more on the exact
+vulnerability and what the solution is is a whole different problem.
